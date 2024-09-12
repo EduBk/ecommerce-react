@@ -43,26 +43,28 @@ const Card = (item) => {
 
     if (isInCart) {
       return (
-        <button className='absolute top-0 right-0 flex justify-center items-center bg-slate-400 w-6 h-6 rounded-full m-2 p-1'>
-          <FaCheck />
+        <button className='flex justify-center items-center bg-slate-300 w-full h-6 rounded m-1 p-1 text-sm'>
+          Add to cart
+          <FaCheck className='ml-2' />
         </button>
       )
     } else {
       return (
         <button
-          className='absolute top-0 right-0 flex justify-center items-center bg-white hover:bg-slate-400 w-6 h-6 rounded-full m-2 p-1'
+          className='flex justify-center items-center bg-cyan-300 hover:bg-cyan-500 w-full h-6 rounded m-1 p-1 text-sm'
           onClick={(event) => {
             addItemsToCart(event, item.item)
           }}
         >
-          <FiPlus />
+          Add to cart
+          <FiPlus className='ml-2' />
         </button>
       )
     }
   }
   return (
     <div
-      className='bh-withe cursor-pointer w-56 h-60 rounded-lg'
+      className='bh-withe cursor-pointer w-56 h-80 rounded-lg'
       onClick={(event) => showProduct(event, item.item)}
     >
       <figure className='relative mb-2 w-full h-4/5'>
@@ -74,9 +76,8 @@ const Card = (item) => {
           src={item.item.image}
           alt={item.item.title}
         />
-        {renderIcon(item.item.id)}
       </figure>
-      <p className='flex justify-between'>
+      <p className='flex justify-between mx-1'>
         <span className='text-sm font-light'>
           {item.item.title.length > 20
             ? item.item.title.slice(0, 20) + '...'
@@ -84,6 +85,7 @@ const Card = (item) => {
         </span>
         <span className='text-lg font-medium'>{formatMx(item.item.price)}</span>
       </p>
+      {renderIcon(item.item.id)}
     </div>
   )
 }

@@ -21,7 +21,7 @@ function Home () {
   return (
     <Layout>
       home
-      <div className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
+      <div className='grid gap-4 grid-cols-auto w-full max-w-screen-lg justify-items-center'>
         {items?.map((item) => {
           return <Card key={item.id} item={item} />
         })}

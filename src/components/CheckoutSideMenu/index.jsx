@@ -40,21 +40,21 @@ const CheckoutSideMenu = () => {
     <aside
       className={`${
         isCheckoutOpen ? 'opacity-100 right-2' : 'opacity-0 right-[-380px]'
-      } flex flex-col fixed  top-[80px] p-2 border bg-white/60 backdrop-blur-3xl border-gray-400 rounded-lg w-[360px] h-[calc(100vh-90px)] transition-all duration-[3000]`}
+      } flex flex-col fixed  top-[80px] p-2 border bg-white/60 backdrop-blur-3xl border-gray-400 rounded-lg md:w-[360px] sm:w-72 h-[calc(100vh-90px)] transition-all duration-[3000]`}
     >
-      <div className='flex justify-between items-center p-6 h-auto'>
+      <div className='flex justify-between items-center p-6'>
         <h2 className='font-medium text-xl'>My Order</h2>
         <div>
           <IoMdClose className='cursor-pointer' onClick={checkoutSideMenu} />
         </div>
       </div>
-      <div className='px-2 flex flex-col gap-3 overflow-y-auto h-5/6 '>
+      <div className='px-2 flex flex-col gap-3 overflow-y-auto h-4/6 '>
         {cartItems.map((item) => (
           <OrderCard key={item.id} item={item} handleDelete={handleDelete} />
         ))}
       </div>
-      <div className='h-1/6'>
-        <div className='px-6 pt-5 mt-2'>
+      <div className='fixed bottom-0 left-0 right-0 '>
+        <div className='px-6 mb-4'>
           <p className='w-full flex justify-between'>
             <span className='font-light'>Total:</span>
             <span className='font-medium'>
@@ -62,7 +62,7 @@ const CheckoutSideMenu = () => {
             </span>
           </p>
         </div>
-        <div className='fixed bottom-0 left-0 right-0 w-full h-10 flex items-center justify-center mb-5'>
+        <div className='w-full h-10 flex items-center justify-center mb-5'>
           <Link
             to='my-orders/last'
             className='w-full h-full flex items-center justify-center'
