@@ -14,7 +14,7 @@ const ProductDetail = () => {
     <aside
       className={`${
         isOpen ? 'opacity-100 right-2' : 'opacity-0 right-[-380px]'
-      } flex flex-col fixed  top-[80px] p-6 border bg-white/60 backdrop-blur-3xl border-gray-400 rounded-lg w-[360px] h-[calc(100vh-90px)] transition-all duration-[3000]`}
+      } flex flex-col fixed  top-[80px] p-6 border bg-white/60 backdrop-blur-3xl border-gray-400 rounded-lg md:w-[360px] sm:w-72 h-[calc(100vh-90px)] transition-all duration-[3000]`}
     >
       <div className='flex justify-between items-center p-6'>
         <h2 className='font-medium text-xl'>Detail</h2>
