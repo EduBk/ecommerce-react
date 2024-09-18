@@ -14,6 +14,7 @@ export const CartContext = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [isCheckoutOpen, setCheckoutIsOpen] = useState(false)
   const [items, setItems] = useState([])
+  const [category, setCategory] = useState('')
   const [filteredItems, setFilterredItems] = useState([])
   const [itemToShow, setItemToShow] = useState({})
   const [cartItems, setCartItems] = useState([])
@@ -24,7 +25,13 @@ export const CartContext = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://fakestoreapi.com/products')
+        let storeUrl
+        if (category !== '') {
+          storeUrl = `https://fakestoreapi.com/products/category/${category}`
+        } else {
+          storeUrl = 'https://fakestoreapi.com/products'
+        }
+        const response = await fetch(storeUrl)
         const data = await response.json()
         setItems(data)
       } catch (error) {
@@ -32,7 +39,7 @@ export const CartContext = ({ children }) => {
       }
     }
     fetchData()
-  }, [])
+  }, [category])
 
   const increment = () => {
     setCounter(counter + 1)
@@ -84,7 +91,8 @@ export const CartContext = ({ children }) => {
         order,
         addOrder,
         search,
-        setSearch
+        setSearch,
+        setCategory
       }}
     >
       {children}

@@ -4,12 +4,8 @@ import { BsCart3 } from 'react-icons/bs'
 import { useShopiContext } from '../../context'
 
 const NavBar = () => {
-  const {
-    counter,
-    checkoutSideMenu,
-    isOpen,
-    openProductDetail
-  } = useShopiContext()
+  const { counter, checkoutSideMenu, isOpen, openProductDetail, setCategory } =
+    useShopiContext()
   const activeStyle = 'underline underline-offset-8'
 
   const handleOpenCartMenu = (event) => {
@@ -20,54 +16,51 @@ const NavBar = () => {
     <nav className='flex justify-between items-center fixed z-10 w-full py-5 px-8 text-sm font-light top-0 bg-white'>
       <ul className='flex items-center gap-3'>
         <li className='font-semibold text-lg'>
-          <NavLink to='/'>Musixo</NavLink>
+          <NavLink to='/' onClick={() => setCategory('')}>Musixo</NavLink>
         </li>
         <li>
           <NavLink
             to='/'
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
+            onClick={() => setCategory('')}
           >
             All
           </NavLink>
         </li>
         <li>
           <NavLink
-            to='/clothes'
+            to='/category/mens-clothing'
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
+            onClick={() => setCategory("men's clothing")}
           >
-            Clothes
+            Men's Clothing
           </NavLink>
         </li>
         <li>
           <NavLink
-            to='/electronics'
+            to='/category/jewelery'
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
+            onClick={() => setCategory('jewelery')}
+          >
+            Jewelery
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to='/category/electronics'
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+            onClick={() => setCategory('electronics')}
           >
             Electronics
           </NavLink>
         </li>
         <li>
           <NavLink
-            to='/furnitures'
+            to='/category/womens-clothing'
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
+            onClick={() => setCategory("women's clothing")}
           >
-            Furnitures
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to='/toys'
-            className={({ isActive }) => (isActive ? activeStyle : undefined)}
-          >
-            Toys
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to='/others'
-            className={({ isActive }) => (isActive ? activeStyle : undefined)}
-          >
-            Others
+            Women's Clothing
           </NavLink>
         </li>
       </ul>
